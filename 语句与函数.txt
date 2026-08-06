@@ -1,0 +1,27 @@
+语句
+    if 语句/if...else if ...else语句...
+    switch...case...(default...)语句
+    select...case...(default...)语句
+        会随机执行一个可运行的case。
+        如果没有case可运行，它将阻塞，直到有case可运行。
+
+    循环语句
+        for 初始化; 条件; 后置语句 {}/for 条件 {}
+
+函数
+    格式
+        func function_name( [parameter list] ) [return_types] {
+            函数体
+        }
+        同类型的可以合并写一起，不同类型： func demo(a int, b string, c bool)
+    eg：
+        func swap(x, y string) (string, string) {
+            return y, x
+        }
+
+        func main() {
+            a, b := swap("Google", "Runoob")
+            fmt.Println(a, b)
+        }
+    同样存在值传递以及引用传递的区别
+
