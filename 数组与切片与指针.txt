@@ -1,0 +1,35 @@
+数组
+    声明方式与变量类似
+    var arr_1 [5] int /  arr_4 := [...] int {1, 2, 3, 4, 5, 6}  /  arr_5 := [5] int {0:3, 1:5, 4:6}     
+    var arr_2 =  [5] int {1, 2, 3, 4, 5}  /   arr_3 := [5] int {1, 2, 3, 4, 5}
+
+    二维数组必须指定行内有多少个元素
+        arr_8 :=  [...][5] int {{1, 2, 3, 4, 5}, {9, 8, 7, 6, 5}, {0:3, 1:5, 4:6}}
+
+    数组一旦声明了长度固定
+    函数中传递时传递的是值，需要修改用指针
+    长度相同的数组才可以相互赋值
+
+切片
+    声明 var identifier []type
+        也可 slice1 := make([]type, len, capacity(Optional))
+            s :=[] int {...}
+            s := arr[startIndex:endIndex] (将 arr 中从下标 startIndex 到 endIndex-1 下的元素创建为一个新的切片)
+
+            s := arr[startIndex:] 默认起始/s := arr[:endIndex] 默认末尾
+
+    len()函数获取切片长度，cap()获取切片最大容量
+    切片未初始化时默认为nil，长度为0
+
+    切片截取
+        sli[low:high:max]  通过第三个索引 max 限制切片容量，让 append 提前触发扩容、分配新底层数组，从而保护原底层数组不被意外修改。就是"切片隔离"
+        其余操作与python类似
+
+        sli = append(sli, 8)  进行切片数据追加
+
+        删除索引i的元素——拼接 s = append(s[:i], s[i+1:]...)
+        不关心顺序时，可以用最后一个元素覆盖要删除的
+
+
+指针
+    
