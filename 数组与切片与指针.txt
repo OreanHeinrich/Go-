@@ -32,4 +32,9 @@
 
 
 指针
+    取地址符是 &
+    指针格式：var var_name *var-type
+        eg:  var ip *int   
+    指针类型前面加上 * 号（前缀）来获取指针所指向的内容 eg: ip=&a   *ip...
+    go空指针为nil
     
