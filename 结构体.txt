@@ -1,0 +1,54 @@
+结构体
+    声明
+        type struct_variable_type struct {
+            member definition
+            member definition
+            ...
+            member definition
+        }
+
+
+    eg:
+        type Books struct {
+            title string
+            author string
+            subject string
+            book_id int
+        }
+
+
+    使用
+        variable_name := structure_variable_type {value1, value2...valuen}
+        或
+        variable_name := structure_variable_type { key1: value1, key2: value2..., keyn: valuen}
+
+    访问：结构体.成员名
+    eg:
+        var Book1 Books 
+        Book1.title = "Go 语言"
+
+    作为函数参数:
+    eg:  func printBook( book Books )
+
+    结构体指针(尽管行为与直接使用结构体相似，但是需要在其他函数内修改值时仍需使用结构体指针)
+    eg:
+        var struct_pointer *Books
+        struct_pointer = &Book1
+        struct_pointer.title
+
+    
+
+    生成 JSON
+        eg:
+            type Result struct {
+                Code    int    `json:"code"`
+                Message string `json:"msg"`
+            }   //json:"code" 是结构体标签（Tag）,作用是映射字段名：Code → JSON 中显示为 "code",Message → JSON 中显示为 "msg"
+
+        序列化eg：
+            jsons, errs := json.Marshal(res)
+            fmt.Println("json data :", string(jsons))
+            json.Marshal 将结构体转为 []byte，用 string() 转为可读字符串。
+        反序列化eg:
+            var res2 Result
+            errs = json.Unmarshal(jsons, &res2)

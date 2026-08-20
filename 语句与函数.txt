@@ -8,6 +8,15 @@
     循环语句
         for 初始化; 条件; 后置语句 {}/for 条件 {}
 
+        使用for 进行遍历字符串：
+            for i, c := range "hello"（或者数组，map,channel...） {
+                fmt.Printf("index: %d, char: %c\n", i, c)
+            }
+
+            或者 for i:= range "hello"/ for _ , c := range "hello"
+
+            同样的有continue、break、goto
+
 函数
     格式
         func function_name( [parameter list] ) [return_types] {
