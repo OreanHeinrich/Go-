@@ -1,0 +1,28 @@
+Map
+    直接创建，initialCapacity（初始容量）为可选参数：
+        map_variable := make(map[KeyType]ValueType, initialCapacity)
+
+        eg:
+            m := make(map[string]int)  //  m := make(map[string]int, 10)  //...
+                var m map[string]int  //  var m map[string]int=map[string]int{}
+            m["apple"] = 5
+
+            m := map[string]int{
+                "apple": 1,
+                "banana": 2,
+                "orange": 3,
+            }
+
+    假如需要获取值eg:
+        v1 := m["apple"]
+        v2, ok := m["pear"]  // 如果键不存在，ok 的值为 false，v2 的值为该类型的零值
+
+    修改/增加元素：m["apple"] = 5、m["Mango"] = 10
+
+    获取长度：len := len(m)
+
+    删除元素：delete(m, "banana")
+
+    生成json
+        序列化（Map 转 JSON）：使用 json.Marshal(res)
+        反序列化（JSON 转 Map）：使用 json.Unmarshal([]byte(jsons), &res2) 将 JSON 字节流解析回 Map

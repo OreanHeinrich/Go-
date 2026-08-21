@@ -1,0 +1,42 @@
+chan
+    go 关键字后面加一个函数，就可以创建一个线程，函数可以为已经写好的函数，也可以是匿名函数。
+    go 语句立即返回，不等待函数完成
+    eg:
+        func main() {
+            go func(msg string) {
+                fmt.Println(msg)
+            }("running in goroutine")
+
+            fmt.Println("running in main")
+            time.Sleep(time.Second) // 等待 goroutine 完成
+        }
+
+    声明 chan
+        ch1 := make(chan int,cap(可选，缓冲大小))
+        不带缓冲的通道，进和出都会阻塞。
+        带缓冲的通道，进一次长度 +1，出一次长度 -1，如果长度等于缓冲长度时，再进就会阻塞。
+
+    声明只读通道     ch3 := make(<-chan string)
+    声明只写通道     ch4 := make(chan<- string)
+
+    发送，接收，关闭
+        ch <- 10        // 发送数据
+        v := <-ch       // 接收数据
+        v, ok := <-ch   // 接收数据 + 状态（channel 是否已关闭且为空）
+        close(ch)       // 关闭 channel
+
+    假如无缓冲：面对面交接，双方都就绪才传递，否则阻塞
+    eg:下面的val能被输出
+        func main() {
+            fmt.Println("main start")
+            ch := make(chan string)
+            go func() {
+                ch <- "a" // 入 chan
+            }()
+            go func() {
+                val := <- ch // 出 chan
+                fmt.Println(val)
+            }()
+            time.Sleep(1 * time.Second)
+            fmt.Println("main end")
+        }

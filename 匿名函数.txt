@@ -1,0 +1,15 @@
+匿名函数
+    go func(...){...}(参数) 就是把定义和调用连写在一起：
+        
+        // 普通函数
+        func say(msg string) {
+            fmt.Println(msg)
+        }
+        go say("hello")    // 先定义，后调用
+
+        // 匿名函数（等价写法）
+        go func(msg string) {
+            fmt.Println(msg)
+        }("hello")         // 定义 + 立即调用，一步到位
+
+    
